@@ -7,7 +7,7 @@ function Home() {
     <div className="home">
       <div className="home__container">
         <img
-          className="home__image"
+          className="home__banner"
           src="https://m.media-amazon.com/images/I/717OO5QwJnL._SX3000_.jpg"
           alt="amazon banner"
         />
