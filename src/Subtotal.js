@@ -7,23 +7,17 @@ import { getBasketTotal } from "./reducer";
 import { useNavigate } from "react-router-dom";
 
 function Subtotal() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [{ basket }, dispatch] = useStateValue();
 
   return (
     <div className="subtotal">
       <CurrencyFormat
         renderText={(value) => (
-          <>
-            <p>
-              Subtotal ({basket.length} items):
-              <strong>{value}</strong>
-            </p>
-            <small className="subtotal__gift">
-              <input type="checkbox" />
-              This order contains a gift
-            </small>
-          </>
+          <p>
+            Subtotal ({basket.length} items):
+            <strong>{value}</strong>
+          </p>
         )}
         decimalScale={2}
         value={getBasketTotal(basket)}
@@ -32,7 +26,13 @@ function Subtotal() {
         prefix={"$"}
       />
 
-      <button onClick={()=>navigate('/payment')}>Proceed to Checkout</button>
+      <button onClick={() => navigate("/payment")}>
+        Proceed to Checkout ({basket.length} items)
+      </button>
+      <small className="subtotal__gift">
+        <input type="checkbox" />
+        This order contains a gift
+      </small>
     </div>
   );
 }
