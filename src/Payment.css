@@ -1,5 +1,3 @@
-
-
 .payment__container>h1{
     text-align:center;
     padding:10px;
@@ -32,12 +30,9 @@
     display: flex;
 }
 
-
-
-
-
-input{
+.payment__creditCardContainer input{
     border: none;
+    max-width: 100px;
 }
 
 .payment__creditCardContainer{
