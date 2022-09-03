@@ -11,10 +11,10 @@ function Home() {
           src="https://m.media-amazon.com/images/I/717OO5QwJnL._SX3000_.jpg"
           alt="amazon banner"
         />
-        <div className="home__row">
+        <div className="home__products">
           <Product
             id="1212113131"
-            title="The lean startup"
+            title="The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses"
             price={29.99}
             image="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"
             rating={5}
@@ -26,8 +26,7 @@ function Home() {
             image="https://m.media-amazon.com/images/I/21eRttw-OZL._AC_SY230_.jpg"
             rating={4}
           />
-        </div>
-        <div className="home__row">
+
           <Product
             id="223949495"
             title="Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor"
@@ -50,8 +49,6 @@ function Home() {
             image="https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2021/September/DashboardCards/Fuji_Dash_SmartWatch_1X._SY304_CB639922137_.jpg"
             rating={4}
           />
-        </div>
-        <div className="home__row">
           <Product
             id="4966443335"
             title="Samsung LC49RG90SSUXEN 49' Curved
