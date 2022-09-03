@@ -56,6 +56,7 @@ function Payment() {
           <div className="payment__title">
             <h3>Payment Method</h3>
           </div>
+          
           <div className="payment__details">
             <form onSubmit={formSubmitHandler}>
               <div className="payment__creditCardContainer">

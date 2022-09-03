@@ -1,26 +1,32 @@
 .header {
-    height: 60px;
-    display: flex;
-    align-items: center;
+    display: grid;
+    justify-content: center;
+    grid-template:
+        "logo nav basket" 40px
+        "search search search" 40px/min-content 1fr min-content;
     background-color: #131921;
     position: sticky;
     top: 0;
-    z-index: 100;
+    right: 0;
+    left: 0;
+    align-items: center;
+    padding: 3px 5px 5px 5px;
+    z-index:100;
+    overflow-x: hidden;
 }
 
-.header__logo {
-    width: 100px;
-    object-fit: contain;
-    margin: 0 20px;
-    margin-top: 18px;
+.header__nav {
+    grid: nav;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .header__search {
+    grid-area: search;
     display: flex;
     flex: 1;
     align-items: center;
     border-radius: 24px;
-
 }
 
 .header__searchInput {
@@ -36,17 +42,36 @@
     background-color: #cd9042;
 }
 
-.header__optionLineOne {
-    font-size: 10px;
+.header__logo {
+    grid-area: logo;
+    width: 60px;
+    object-fit: contain;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 3px;
+    display: flex;
+    align-items: center;
 }
 
-.header__optionLineTwo {
-    font-size: 13px;
-    font-weight: 800;
+.header__logoImg {
+    width: 100%;
+    object-fit: contain;
+}
+
+.header__option {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: white;
+    text-align: center;
 }
 
 .header__optionBasket {
+    grid-area: basket;
+    width: 60px;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
     color: white;
 }
@@ -56,21 +81,20 @@
     margin-right: 10px;
 }
 
-.header__nav {
-    display: flex;
-    justify-content: space-evenly;
+.header__optionLineOne {
+    font-size: 10px;
 }
 
-.header__option {
-    display: flex;
-    flex-direction: column;
-    margin-left: 10px;
-    margin-right: 10px;
-    color: white;
+.header__optionLineTwo {
+    font-size: 13px;
+    font-weight: 800;
 }
 
-.header__option:hover,
-.header__optionBasket:hover {
-    color: #cd9042;
-    cursor: pointer;
+@media(min-width:600px) {
+    .header {
+        grid-template:
+            "logo search nav basket"
+            40px/min-content 1fr max-content min-content;
+        justify-content: space-between;
+    }
 }
