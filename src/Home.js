@@ -14,14 +14,14 @@ function Home() {
         <div className="home__products">
           <Product
             id="1212113131"
-            title="The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses"
+            title="The Lean Startup: How Today's Entrepreneurs Use Continuous Innovation to "
             price={29.99}
             image="https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg"
             rating={5}
           />
           <Product
             id="49949495"
-            title="Kenwood kMix Stand Mixer for Bakeing, Stylish Kitchen Mixer with K-beater, Dough Hook and Whisk, 5 Littre Glass Bowl"
+            title="Kenwood kMix Stand Mixer for Bakeing, Stylish Kitchen Mixer with K-beater, Dough Hook and Whisk"
             price={239.99}
             image="https://m.media-amazon.com/images/I/21eRttw-OZL._AC_SY230_.jpg"
             rating={4}
@@ -52,7 +52,7 @@ function Home() {
           <Product
             id="4966443335"
             title="Samsung LC49RG90SSUXEN 49' Curved
-          LED Gaming Monitor - Super Ultra Wide Dual
+          LED Gaming Monitor
           WQHD 5120x1440"
             price={1094.98}
             image="https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._ACSX355_.jpg"
