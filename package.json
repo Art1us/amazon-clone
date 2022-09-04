@@ -2,7 +2,7 @@
   "name": "amazon-clone",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Art1us.github.io",
+  "homepage": "https://Art1us.github.io/amazon-clone",
   "dependencies": {
     "@emotion/react": "^11.10.0",
     "@emotion/styled": "^11.10.0",
