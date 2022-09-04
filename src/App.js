@@ -15,7 +15,6 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (authUser) => {
-      console.log("the user is >>>", authUser);
         dispatch({
           type:'SET_USER',
           user: authUser

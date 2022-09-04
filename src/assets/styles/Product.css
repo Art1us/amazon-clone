@@ -11,13 +11,30 @@
     z-index:1;
 }
 
+.product__info{
+    height:100px;
+    margin-top:0;
+    padding:0;
+    margin-bottom:15px;
+    width:100%;
+    height: min-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.product__title{
+    width:100%;
+    overflow:hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
 .product__rating{
     display:flex;
 }
 
-
 .product>img{
-    max-height:200px;
+    height:200px;
     width:100%;
     object-fit: contain;
     margin-bottom: 15px;
@@ -43,7 +60,3 @@
     margin-top: 5px;
 }
 
-.product__info{
-    height:100px;
-    margin-bottom:15px;
-}
