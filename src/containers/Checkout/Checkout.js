@@ -4,7 +4,6 @@ import { useStateValue } from "../../context/StateProvider";
 import Subtotal from "../../components/Subtotal";
 import CheckoutProduct from "./CheckoutProduct";
 
-
 function Checkout() {
   const [{ basket, user }, dispatch] = useStateValue();
 
@@ -27,6 +26,7 @@ function Checkout() {
           {basket.length
             ? basket.map((item) => (
                 <CheckoutProduct
+                  key={item.id + Math.floor(Math.random()*100000)}
                   id={item.id}
                   title={item.title}
                   image={item.image}
