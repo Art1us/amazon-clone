@@ -15,7 +15,7 @@ function Payment() {
   };
 
   const [succeeded, setSucceeded] = useState(false);
-  const [processing,setProcessing] = useState('')
+  const [processing, setProcessing] = useState("");
 
   const [error, setError] = useState(null);
   const [disabled, setDisabled] = useState(true);
@@ -43,6 +43,7 @@ function Payment() {
           <div className="payment__items">
             {basket.map((item) => (
               <CheckoutProduct
+                key={item.id + Math.floor(Math.random() * 100000)}
                 id={item.id}
                 title={item.title}
                 image={item.image}
@@ -56,7 +57,7 @@ function Payment() {
           <div className="payment__title">
             <h3>Payment Method</h3>
           </div>
-          
+
           <div className="payment__details">
             <form onSubmit={formSubmitHandler}>
               <div className="payment__creditCardContainer">
