@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import CheckoutProduct from "./CheckoutProduct";
-import "./Payment.css";
-import { useStateValue } from "./StateProvider";
+import CheckoutProduct from "../Checkout/CheckoutProduct";
+import "../../assets/styles/Payment.css";
+import { useStateValue } from "../../context/StateProvider";
+import { getBasketTotal } from "../../context/reducer";
 import { Link } from "react-router-dom";
 import CurrencyFormat from "react-currency-format";
-import { getBasketTotal } from "./reducer";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 
 function Payment() {

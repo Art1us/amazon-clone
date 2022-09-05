@@ -1,10 +1,10 @@
 import React from "react";
-import "./Header.css";
+import "../assets/styles/Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import { Link } from "react-router-dom";
-import { useStateValue } from "./StateProvider";
-import { auth } from "./firebase";
+import { useStateValue } from "../context/StateProvider";
+import { auth } from "../utils/firebase";
 import { signOut } from "firebase/auth";
 
 function Header() {
@@ -24,7 +24,7 @@ function Header() {
         <div className='header__logo'>
         <img
           className="header__logoImg"
-          src={require("../src/assets/amazon_PNG11.png")}
+          src={require("../../src/assets/images/amazon_PNG11.png")}
           alt="amazon logo"
         />
         </div>
