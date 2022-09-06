@@ -1,3 +1,7 @@
+.payment{
+    overflow-x: hidden;
+}
+
 .payment__container>h1{
     text-align:center;
     padding:10px;
@@ -12,14 +16,21 @@
 
 .payment__section{
     display:flex;
+    flex-direction: column;
     padding:20px;
     margin:0 20px;
     border-bottom:1px solid lightgray;
 }
 
 .payment__title{
-    flex:0.2;
-    margin-right:10px;
+    /* flex:0.2;
+    margin-right:10px; */
+    display:flex;
+    margin-bottom:10px;
+}
+
+.payment__title h3:first-of-type{
+    margin-right:15px;
 }
 
 .payment__address, .payment__items, .payment__details{

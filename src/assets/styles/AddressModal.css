@@ -1,0 +1,74 @@
+
+.addressModal{
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    height: 100%;
+    border: 1px solid #ccc;  
+    border-radius: 8px;
+    
+    
+}
+
+.addressModal__header{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F0F2F2;;
+    padding:20px;
+    border-bottom: 1px solid #D9D9D9;
+}
+
+.addressModal__closeIcon{
+    color:#575757;
+    transform: scale(0.8);
+    cursor:pointer;
+}
+
+.addressModal__main{
+    padding:10px 20px;
+}
+
+.addressModal__main h2{
+    margin-bottom: 10px;
+}
+
+.addressModal__mainForm{
+    display: flex;
+    flex-direction: column;
+}
+
+.adressModal__bottomAddress{
+    display: flex;
+    
+}
+
+.addressModal__bottomAddress--city{
+    flex-shrink:1;
+}
+
+.addressModal__bottomAddress--state{
+    margin:0 5px;
+    flex-shrink:1.5;
+}
+
+.addressModal__bottomAddress--state input{
+    border-radius: 8px;
+}
+
+.addressModal__bottomAddress--zip{
+    flex-shrink:1.7;
+}
+
+.addressModal__mainForm h5{
+    margin-top:10px;
+}
+
+.addressModal__mainForm input{
+    margin-top:4px;
+    width:100%;
+}
+
+.addressModal__footer{
+    padding: 20px 0;
+}
+

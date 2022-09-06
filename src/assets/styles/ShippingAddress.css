@@ -1,0 +1,106 @@
+.shippingAddress {
+    border: 1px solid #D9D9D9;
+    border-radius: 6px;
+}
+
+.shippingAddress__topSection {
+    padding: 15px;
+}
+
+.shippingAddress__title {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px #D9D9D9 solid;
+}
+
+
+.shippingAddress__title h5 {
+    color: #007185;
+}
+
+.shippingAddress__address--add {
+    padding: 5px 0;
+
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.shippingAddress__address--add p {
+    color: #007185;
+}
+
+.shippingAddress__address--addIcon {
+    color: #dddddd;
+}
+
+.shippingAddress__buttonContainer {
+
+    background-color: #F0F2F2;
+    border-radius: 6px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    border-top: 1px solid #D9D9D9;
+}
+
+.shippingAddress__button {
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 700;
+    margin: 10px 20px;
+    background-color: #FFD814;
+}
+
+.shippingAddress__modal {
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    outline: none;
+    border-radius: 8px;
+    max-width: 300px;
+}
+
+.shippingAddress__modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(90, 90, 90, 0.5);
+}
+
+.shippingAddress__addressItem {
+    display: flex;
+    margin-top: 10px;
+    padding: 5px;
+}
+
+.addressChecked {
+    display: flex;
+    margin-top: 10px;
+    border: 1px solid rgb(251, 216, 180);
+    background-color: rgba(251, 216, 180, 0.2);
+    border-radius: 5px;
+    padding: 4px;
+}
+
+.shippingAddress__addressItem--radio {
+    color: #005CC8;
+    transform: scale(0.8);
+    margin-right: 5px;
+}
+
+
+.shippingAddress__addressItem p {
+    margin-right: 5px;
+}
+
+.shippingAddress__addressEditButton {
+    color: #007185
+}
