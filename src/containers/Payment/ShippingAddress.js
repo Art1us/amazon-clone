@@ -22,7 +22,7 @@ function ShippingAddress({ selectTitleHandler }) {
 
   function editAddress(id) {
     console.log(`This is id ${id}`)
-    setInitialAddress(prev=>{return{...prev, country:'usa'}})
+    setInitialAddress()
     setShowAddressModal(true);
   }
 
