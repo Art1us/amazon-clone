@@ -7,7 +7,7 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 import { useStateValue } from "../../context/StateProvider";
 
-function ShippingAddress({ selectTitleHandler }) {
+function ShippingAddress({ setSelectedTitle }) {
   const [showAddressModal, setShowAddressModal] = useState(false);
   const [{ address, chosenAddress }, dispatch] = useStateValue();
   const [initialAddress, setInitialAddress] = useState({})
@@ -21,8 +21,8 @@ function ShippingAddress({ selectTitleHandler }) {
   };
 
   function editAddress(id) {
-    console.log(`This is id ${id}`)
-    setInitialAddress()
+    const currentAddress = address.filter(item=>id===item.id)[0]
+    setInitialAddress(currentAddress)    
     setShowAddressModal(true);
   }
 
@@ -92,7 +92,7 @@ function ShippingAddress({ selectTitleHandler }) {
       <div className="shippingAddress__buttonContainer">
         <button
           className="shippingAddress__button"
-          onClick={() => selectTitleHandler(2)}
+          onClick={() => setSelectedTitle(2)}
         >
           Use this address
         </button>

@@ -11,9 +11,9 @@ function Payment() {
 
   const [selectedTitle, setSelectedTitle] = useState(1);
 
-  function selectTitleHandler(titleNum) {
+ /*  function selectTitleHandler(titleNum) {
     setTimeout(()=>setSelectedTitle(titleNum), 1)
-  }
+  } */
 
   return (
     <div className="payment">
@@ -27,7 +27,7 @@ function Payment() {
             <h3>Choose a shipping address</h3>
           </div>
           {selectedTitle === 1 && (
-            <ShippingAddress selectTitleHandler={selectTitleHandler} />
+            <ShippingAddress setSelectedTitle={setSelectedTitle} />
           )}
         </div>
         <div className="payment__section" onClick={() => setSelectedTitle(2)}>
