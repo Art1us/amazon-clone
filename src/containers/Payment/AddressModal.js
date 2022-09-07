@@ -2,18 +2,21 @@ import React, { useState } from "react";
 import "../../assets/styles/AddressModal.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { useStateValue } from "../../context/StateProvider";
+import { nanoid } from "nanoid";
 
 function AddressModal({ setShowAddressModal, initialAddress }) {
-  
-
-
-
   const [newAddress, setNewAddress] = useState(initialAddress);
   const [{}, dispatch] = useStateValue();
 
+  console.log(newAddress);
+
   const addNewAddress = () => {
+    if (!newAddress.country) {
+      return;
+    }
+
     setNewAddress((prev) => {
-      Object.assign(prev, { id: Math.floor(Math.random() * 1000) });
+      Object.assign(prev, { id: nanoid() });
       return {
         ...prev,
       };
@@ -24,7 +27,7 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
     });
     dispatch({
       type: "SET_CHOSEN_ADDRESS",
-      chosenAddress: {id:newAddress.id},
+      chosenAddress: { id: newAddress.id },
     });
     setShowAddressModal(false);
   };
@@ -49,6 +52,7 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
               setNewAddress({ ...newAddress, country: e.target.value })
             }
           />
+          {!newAddress.country && <p>s</p>}
           <h5>Full name (First and Last name)</h5>
           <input
             type="text"

@@ -10,8 +10,18 @@ import { useStateValue } from "../../context/StateProvider";
 function ShippingAddress({ setSelectedTitle }) {
   const [showAddressModal, setShowAddressModal] = useState(false);
   const [{ address, chosenAddress }, dispatch] = useStateValue();
-  const [initialAddress, setInitialAddress] = useState({})
-  
+
+  const [initialAddress, setInitialAddress] = useState({
+    id: "",
+    country: "",
+    name: "",
+    phone: "",
+    addressStreet: "",
+    addressApp: "",
+    city: "",
+    state: "",
+    zip: "",
+  });
 
   const selectAddress = (id) => {
     dispatch({
@@ -21,8 +31,8 @@ function ShippingAddress({ setSelectedTitle }) {
   };
 
   function editAddress(id) {
-    const currentAddress = address.filter(item=>id===item.id)[0]
-    setInitialAddress(currentAddress)    
+    const currentAddress = address.filter((item) => id === item.id)[0];
+    setInitialAddress(currentAddress);
     setShowAddressModal(true);
   }
 
@@ -73,7 +83,7 @@ function ShippingAddress({ setSelectedTitle }) {
                   </p>
                   <p
                     className="shippingAddress__addressEditButton"
-                    onClick={()=>editAddress(item.id)}
+                    onClick={() => editAddress(item.id)}
                   >
                     Edit
                   </p>
@@ -92,7 +102,10 @@ function ShippingAddress({ setSelectedTitle }) {
       <div className="shippingAddress__buttonContainer">
         <button
           className="shippingAddress__button"
-          onClick={() => setSelectedTitle(2)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setSelectedTitle(2);
+          }}
         >
           Use this address
         </button>

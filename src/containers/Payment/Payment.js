@@ -11,10 +11,6 @@ function Payment() {
 
   const [selectedTitle, setSelectedTitle] = useState(1);
 
- /*  function selectTitleHandler(titleNum) {
-    setTimeout(()=>setSelectedTitle(titleNum), 1)
-  } */
-
   return (
     <div className="payment">
       <div className="payment__container">
@@ -35,7 +31,6 @@ function Payment() {
             <h3>2</h3>
             <h3>Payment Method</h3>
           </div>
-          {console.log("rendered")}
           {selectedTitle === 2 && <PaymentMethod />}
         </div>
         <div className="payment__section" onClick={() => setSelectedTitle(3)}>
