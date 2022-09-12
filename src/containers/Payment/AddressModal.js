@@ -8,9 +8,13 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
   const [newAddress, setNewAddress] = useState(initialAddress);
   const [{}, dispatch] = useStateValue();
 
-  console.log(newAddress);
 
-  const addNewAddress = () => {
+    function submitHandler(){        
+        addNewAddress()
+    }
+
+
+  function addNewAddress(){
     if (!newAddress.country) {
       return;
     }
@@ -43,7 +47,7 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
       </div>
       <div className="addressModal__main">
         <h2>Add a new address</h2>
-        <form className="addressModal__mainForm">
+        <form className="addressModal__mainForm" onSubmit={submitHandler}>
           <h5>Country/Region</h5>
           <input
             type="text"
@@ -52,7 +56,6 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
               setNewAddress({ ...newAddress, country: e.target.value })
             }
           />
-          {!newAddress.country && <p>s</p>}
           <h5>Full name (First and Last name)</h5>
           <input
             type="text"
@@ -120,7 +123,10 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
         </form>
       </div>
       <div className="addressModal__footer">
-        <button className="shippingAddress__button" onClick={addNewAddress}>
+        <button
+          className="shippingAddress__button"
+          onClick={submitHandler}
+        >
           Use this address
         </button>
       </div>
