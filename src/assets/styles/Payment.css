@@ -23,10 +23,13 @@
 }
 
 .payment__title{
-    /* flex:0.2;
-    margin-right:10px; */
     display:flex;
     margin-bottom:10px;
+    cursor: pointer;
+}
+
+.payment__title.selected{
+    color:#C45500;
 }
 
 .payment__title h3:first-of-type{

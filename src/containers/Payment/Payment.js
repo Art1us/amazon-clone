@@ -18,7 +18,7 @@ function Payment() {
           Checkout (<Link to="/checkout">{basket?.length} items</Link>)
         </h1>
         <div className="payment__section" onClick={() => setSelectedTitle(1)}>
-          <div className="payment__title">
+          <div className={`payment__title ${selectedTitle === 1 && 'selected'}`}>
             <h3>1</h3>
             <h3>Choose a shipping address</h3>
           </div>
@@ -27,14 +27,14 @@ function Payment() {
           )}
         </div>
         <div className="payment__section" onClick={() => setSelectedTitle(2)}>
-          <div className="payment__title">
+          <div className={`payment__title ${selectedTitle === 2 && 'selected'}`}>
             <h3>2</h3>
             <h3>Payment Method</h3>
           </div>
           {selectedTitle === 2 && <PaymentMethod />}
         </div>
         <div className="payment__section" onClick={() => setSelectedTitle(3)}>
-          <div className="payment__title">
+          <div className={`payment__title ${selectedTitle === 3 && 'selected'}`}>
             <h3>3</h3>
             <h3>Items and shipping</h3>
           </div>
