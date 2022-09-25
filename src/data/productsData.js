@@ -56,4 +56,13 @@ export default [
       "https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._ACSX355_.jpg",
     rating: 4,
   },
+  {
+    id: "4966443335",
+    title:
+      "hui LC49RG90SSUXEN 49' Curved LED Gaming Monitor WQHD 5120x1440",
+    price: 1094.98,
+    image:
+      "https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._ACSX355_.jpg",
+    rating: 4,
+  },
 ];
