@@ -5,6 +5,7 @@ import { useStateValue } from "../../context/StateProvider";
 import { nanoid } from "nanoid";
 import addressFormInputs from "../../data/addressFormInputs";
 import AddressInput from "./AddressInput";
+import { useEffect } from "react";
 
 function AddressModal({ setShowAddressModal, initialAddress }) {
   const [newAddress, setNewAddress] = useState(initialAddress);
@@ -20,13 +21,17 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
 
   const [formErrors, setFormErrors] = useState(updatedFormErrors);
 
-  function submitHandler() {
+  useEffect(()=>{
     addressFormInputs.forEach((item) => {
       if (new RegExp(item.pattern).test(newAddress[item.name])) {
         updatedFormErrors[item.name] = false;
       }
     });
     setFormErrors(updatedFormErrors);
+  }, [newAddress])
+
+  function submitHandler() {
+    
     if (Object.values(formErrors).every((item) => item === false)) {
       console.log(formErrors);
       addNewAddress();
