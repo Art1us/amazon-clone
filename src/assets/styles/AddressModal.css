@@ -77,7 +77,3 @@ input {
 .addressInput span {
     color: red;
 }
-
-/* .addressModal__mainForm input:invalid~span {
-    display: block;
-} */

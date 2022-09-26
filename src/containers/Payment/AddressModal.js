@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import "../../assets/styles/AddressModal.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { useStateValue } from "../../context/StateProvider";
@@ -9,59 +9,73 @@ import AddressInput from "./AddressInput";
 function AddressModal({ setShowAddressModal, initialAddress }) {
   const [newAddress, setNewAddress] = useState(initialAddress);
   const [{}, dispatch] = useStateValue();
-  const [formErrors, setFormErrors] = useState({
+  /* const [formErrors, setFormErrors] = useState({
     country: false,
     name: false,
     phone: false,
-    addressStreet: false,
-    addressApp: false,
     city: false,
-    state: false,
+    zip: false,
+  }); */
+
+  const formErrors = useRef({
+    country: false,
+    name: false,
+    phone: false,
+    city: false,
     zip: false,
   });
 
-  //isFirstSubmit state
+  const renderErrors = useCallback(() => {
+    validateAddressForm();
+  }, [formErrors.current]);
+  
 
   function submitHandler() {
-    validateAddressForm();
-    //addNewAddress();
+    renderErrors()
+    console.log(formErrors)
+    if (Object.values(formErrors.current).every((item) => item === false)) {
+      addNewAddress();
+    }else{
+      renderErrors()
+    }
   }
 
   function validateAddressForm() {
-    setFormErrors({
+    formErrors.current = {
       country: true,
       name: true,
       phone: true,
-      addressStreet: true,
-      addressApp: true,
       city: true,
-      state: true,
       zip: true,
-    })
+    };
 
     addressFormInputs.forEach((item) => {
       if (new RegExp(item.pattern).test(newAddress[item.name])) {
-        setFormErrors((prev) => ({ ...prev, [item.name]: false }));
+        formErrors.current = { ...formErrors.current, [item.name]: false };
       }
-      console.log(formErrors)
     });
   }
 
   function addNewAddress() {
-    if (!newAddress.country) {
-      return;
+    if (newAddress.id === "") {
+      setNewAddress((prev) => {
+        Object.assign(prev, { id: nanoid() });
+        return {
+          ...prev,
+        };
+      });
+
+      dispatch({
+        type: "ADD_NEW_ADDRESS",
+        address: newAddress,
+      });
+    } else {
+      dispatch({
+        type: "EDIT_ADDRESS",
+        address: newAddress,
+      });
     }
 
-    setNewAddress((prev) => {
-      Object.assign(prev, { id: nanoid() });
-      return {
-        ...prev,
-      };
-    });
-    dispatch({
-      type: "ADD_NEW_ADDRESS",
-      address: newAddress,
-    });
     dispatch({
       type: "SET_CHOSEN_ADDRESS",
       chosenAddress: { id: newAddress.id },
@@ -92,7 +106,7 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
                 <AddressInput
                   key={item.id}
                   {...item}
-                  displayError={formErrors[item.name]}
+                  displayError={formErrors.current[item.name]}
                   value={newAddress[item.name]}
                   onChange={(e) =>
                     setNewAddress({
@@ -111,7 +125,7 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
                     <AddressInput
                       key={item.id}
                       {...item}
-                      displayError={formErrors[item.name]}
+                      displayError={formErrors.current[item.name]}
                       value={newAddress[item.name]}
                       onChange={(e) =>
                         setNewAddress({

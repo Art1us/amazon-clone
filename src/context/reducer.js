@@ -41,6 +41,15 @@ const reducer = (state, action) => {
     case "ADD_NEW_ADDRESS":
       return { ...state, address: [...state.address, action.address] };
 
+    case "EDIT_ADDRESS":
+      let newStateAddress = state.address.map((item) => {
+        if (item.id === action.address.id) {
+          return { ...action.address };
+        }
+        return item;
+      });
+      return { ...state, address: [...newStateAddress] };
+
     case "SET_CHOSEN_ADDRESS":
       return { ...state, chosenAddress: action.chosenAddress };
 

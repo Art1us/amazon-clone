@@ -11,7 +11,7 @@ function ShippingAddress({ setSelectedTitle }) {
   const [showAddressModal, setShowAddressModal] = useState(false);
   const [{ address, chosenAddress }, dispatch] = useStateValue();
 
-  const [initialAddress, setInitialAddress] = useState({
+  const emptyAddress = {
     id: "",
     country: "",
     name: "",
@@ -21,7 +21,8 @@ function ShippingAddress({ setSelectedTitle }) {
     city: "",
     state: "",
     zip: "",
-  });
+  };
+  const [initialAddress, setInitialAddress] = useState(emptyAddress);
 
   const selectAddress = (id) => {
     dispatch({
@@ -29,6 +30,12 @@ function ShippingAddress({ setSelectedTitle }) {
       chosenAddress: { id: id },
     });
   };
+
+  function addNewAddressHandler() {
+    setInitialAddress(emptyAddress);
+    setShowAddressModal(true);
+    
+  }
 
   function editAddress(id) {
     const currentAddress = address.filter((item) => id === item.id)[0];
@@ -92,7 +99,7 @@ function ShippingAddress({ setSelectedTitle }) {
             })}
           <div
             className="shippingAddress__address--add"
-            onClick={() => setShowAddressModal(true)}
+            onClick={() => addNewAddressHandler()}
           >
             <AddOutlinedIcon className="shippingAddress__address--addIcon" />
             <p>Add new address</p>

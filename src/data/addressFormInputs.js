@@ -36,7 +36,7 @@ export default [
       placeholder: "Street Address or P.O. box",
       errorMessage: "Please enter your address.",
       label: "Address",
-      required:true
+      required:false
     },
     {
       id: 5,
