@@ -9,51 +9,28 @@ import AddressInput from "./AddressInput";
 function AddressModal({ setShowAddressModal, initialAddress }) {
   const [newAddress, setNewAddress] = useState(initialAddress);
   const [{}, dispatch] = useStateValue();
-  /* const [formErrors, setFormErrors] = useState({
-    country: false,
-    name: false,
-    phone: false,
-    city: false,
-    zip: false,
-  }); */
 
-  const formErrors = useRef({
-    country: false,
-    name: false,
-    phone: false,
-    city: false,
-    zip: false,
-  });
+  const updatedFormErrors = {
+    country: true,
+    name: true,
+    phone: true,
+    city: true,
+    zip: true,
+  };
 
-  const renderErrors = useCallback(() => {
-    validateAddressForm();
-  }, [formErrors.current]);
-  
+  const [formErrors, setFormErrors] = useState(updatedFormErrors);
 
   function submitHandler() {
-    renderErrors()
-    console.log(formErrors)
-    if (Object.values(formErrors.current).every((item) => item === false)) {
-      addNewAddress();
-    }else{
-      renderErrors()
-    }
-  }
-
-  function validateAddressForm() {
-    formErrors.current = {
-      country: true,
-      name: true,
-      phone: true,
-      city: true,
-      zip: true,
-    };
-
     addressFormInputs.forEach((item) => {
       if (new RegExp(item.pattern).test(newAddress[item.name])) {
-        formErrors.current = { ...formErrors.current, [item.name]: false };
+        updatedFormErrors[item.name] = false;
       }
     });
+    setFormErrors(updatedFormErrors);
+    if (Object.values(formErrors).every((item) => item === false)) {
+      console.log(formErrors);
+      addNewAddress();
+    }
   }
 
   function addNewAddress() {
@@ -106,7 +83,7 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
                 <AddressInput
                   key={item.id}
                   {...item}
-                  displayError={formErrors.current[item.name]}
+                  displayError={formErrors[item.name]}
                   value={newAddress[item.name]}
                   onChange={(e) =>
                     setNewAddress({
@@ -125,7 +102,7 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
                     <AddressInput
                       key={item.id}
                       {...item}
-                      displayError={formErrors.current[item.name]}
+                      displayError={formErrors[item.name]}
                       value={newAddress[item.name]}
                       onChange={(e) =>
                         setNewAddress({
