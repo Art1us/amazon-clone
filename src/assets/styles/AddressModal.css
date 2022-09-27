@@ -36,24 +36,16 @@
 
 .adressModal__bottomAddress {
     display: flex;
-
 }
 
-.addressModal__bottomAddress--city {
-    flex-shrink: 1;
+.addressModal__bottomAddress--city{
+    flex:1;
+    margin-right:2px;
 }
 
-.addressModal__bottomAddress--state {
-    margin: 0 5px;
-    flex-shrink: 1.5;
-}
-
-.addressModal__bottomAddress--state input {
-    border-radius: 8px;
-}
-
-.addressModal__bottomAddress--zip {
-    flex-shrink: 1.7;
+.addressModal__bottomAddress--zip{
+    flex:1;
+    margin-left:2px;
 }
 
 .addressModal__mainForm h5 {

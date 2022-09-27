@@ -19,7 +19,6 @@ function ShippingAddress({ setSelectedTitle }) {
     addressStreet: "",
     addressApp: "",
     city: "",
-    state: "",
     zip: "",
   };
   const [initialAddress, setInitialAddress] = useState(emptyAddress);

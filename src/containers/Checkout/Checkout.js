@@ -19,7 +19,7 @@ function Checkout() {
       </div>
       <div className="checkout__container">
         <div className="checkout__subtotal">
-          <Subtotal />
+         { basket.length > 0 && <Subtotal />}
         </div>
         <div className="checkout__products">
           <h2 className="checkout__title">Your shopping basket</h2>

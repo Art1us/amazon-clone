@@ -1,40 +1,56 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../assets/styles/AddressModal.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { useStateValue } from "../../context/StateProvider";
 import { nanoid } from "nanoid";
 import addressFormInputs from "../../data/addressFormInputs";
 import AddressInput from "./AddressInput";
-import { useEffect } from "react";
 
 function AddressModal({ setShowAddressModal, initialAddress }) {
   const [newAddress, setNewAddress] = useState(initialAddress);
   const [{}, dispatch] = useStateValue();
 
-  const updatedFormErrors = {
-    country: true,
-    name: true,
-    phone: true,
-    city: true,
-    zip: true,
+  const initialFormErrorObject = {
+    country: false,
+    name: false,
+    phone: false,
+    city: false,
+    zip: false,
   };
 
-  const [formErrors, setFormErrors] = useState(updatedFormErrors);
+  const [isDirtyInput, setIsDirtyInput] = useState(initialFormErrorObject);
+  const [formErrors, setFormErrors] = useState(initialFormErrorObject);
 
-  useEffect(()=>{
+  useEffect(() => {
+    const updatedFormErrors = {};
     addressFormInputs.forEach((item) => {
-      if (new RegExp(item.pattern).test(newAddress[item.name])) {
+      if (
+        !isDirtyInput[item.name] ||
+        new RegExp(item.pattern).test(newAddress[item.name])
+      ) {
         updatedFormErrors[item.name] = false;
+      } else {
+        updatedFormErrors[item.name] = true;
       }
     });
     setFormErrors(updatedFormErrors);
-  }, [newAddress])
+  }, [newAddress, isDirtyInput]);
 
   function submitHandler() {
-    
-    if (Object.values(formErrors).every((item) => item === false)) {
-      console.log(formErrors);
-      addNewAddress();
+    const { country, name, phone, city, zip } = newAddress;
+
+    if (!!country && !!name && !!phone && !!city && !!zip) {
+      if (Object.values(formErrors).every((item) => item === false)) {
+        addNewAddress();
+      }
+    }else{
+      setIsDirtyInput({
+        country: true,
+        name: true,
+        phone: true,
+        city: true,
+        zip: true,
+      })
     }
   }
 
@@ -90,6 +106,9 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
                   {...item}
                   displayError={formErrors[item.name]}
                   value={newAddress[item.name]}
+                  onBlur={() => {
+                    setIsDirtyInput((prev) => ({ ...prev, [item.name]: true }));
+                  }}
                   onChange={(e) =>
                     setNewAddress({
                       ...newAddress,
@@ -103,12 +122,18 @@ function AddressModal({ setShowAddressModal, initialAddress }) {
             {addressFormInputs.map(
               (item) =>
                 item.id > 5 && (
-                  <div className={`addressModal__bottomAddress--${item.name}`}>
+                  <div key={item.id} className={`addressModal__bottomAddress--${item.name}`}>
                     <AddressInput
                       key={item.id}
                       {...item}
                       displayError={formErrors[item.name]}
                       value={newAddress[item.name]}
+                      onBlur={() => {
+                        setIsDirtyInput((prev) => ({
+                          ...prev,
+                          [item.name]: true,
+                        }));
+                      }}
                       onChange={(e) =>
                         setNewAddress({
                           ...newAddress,
