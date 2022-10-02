@@ -3,6 +3,7 @@ import "../../assets/styles/ImageSlider.css";
 import bannerImages from "../../data/bannerImages";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import { motion, AnimatePresence } from "framer-motion";
 
 function ImageSlider() {
   const [currentBanner, setCurrentBanner] = useState(0);
@@ -45,19 +46,28 @@ function ImageSlider() {
     return () => clearInterval(slideInterval);
   }, [currentBanner]);
 
+ 
+
   return (
     <>
-      <div className="imageSlider__arrowLeft" onClick={prevBanner}>
-        <ArrowBackIosIcon className="imageSlider__arrow" />
-      </div>
-      <div className="imageSlider__arrowRight" onClick={nextBanner}>
-        <ArrowForwardIosIcon className="imageSlider__arrow" />
-      </div>
-      <img
-        className="imageSlider__slideImage"
-        src={bannerImages[currentBanner].src}
-        alt="amazon banner"
-      />
+      <AnimatePresence initial={false}>
+        <div className="imageSlider__arrowLeft" onClick={prevBanner}>
+          <ArrowBackIosIcon className="imageSlider__arrow" />
+        </div>
+        <div className="imageSlider__arrowRight" onClick={nextBanner}>
+          <ArrowForwardIosIcon className="imageSlider__arrow" />
+        </div>
+        <motion.img
+          
+          initial= {{ x: 200, opacity: 0 }}
+          animate= {{ x: 0, opacity: 1 }}
+          exit={{ x: -200, opacity: 0 }}
+          className="imageSlider__slideImage"
+          src={bannerImages[currentBanner].src}
+          alt="amazon banner"
+          key={currentBanner}
+        />
+      </AnimatePresence>
     </>
   );
 }

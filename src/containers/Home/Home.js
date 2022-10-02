@@ -13,7 +13,7 @@ function Home() {
           {productsData.map((item) => {
             return (
               <Product
-              key={`home${item.id}`}
+                key={`home${item.id}`}
                 id={item.id}
                 title={item.title}
                 price={item.price}
