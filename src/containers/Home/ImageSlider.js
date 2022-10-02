@@ -46,7 +46,6 @@ function ImageSlider() {
     return () => clearInterval(slideInterval);
   }, [currentBanner]);
 
- 
 
   return (
     <>
@@ -57,8 +56,7 @@ function ImageSlider() {
         <div className="imageSlider__arrowRight" onClick={nextBanner}>
           <ArrowForwardIosIcon className="imageSlider__arrow" />
         </div>
-        <motion.img
-          
+        <motion.img          
           initial= {{ x: 200, opacity: 0 }}
           animate= {{ x: 0, opacity: 1 }}
           exit={{ x: -200, opacity: 0 }}
