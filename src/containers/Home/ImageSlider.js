@@ -6,7 +6,7 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 
 function ImageSlider() {
   const [currentBanner, setCurrentBanner] = useState(0);
-  const [autoScroll, setAutoScroll] = useState(false);
+  const [autoScroll, setAutoScroll] = useState(true);
 
   let slideInterval;
   let intervalTime = 5000;
