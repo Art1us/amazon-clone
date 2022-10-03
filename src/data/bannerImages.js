@@ -1,7 +1,7 @@
 export default [
   {
     id: 1,
-    src: "https://m.media-amazon.com/images/I/717OO5QwJnL._SX3000_.jpg",
+    src: "https://m.media-amazon.com/images/I/61TD5JLGhIL._SX3000_.jpg",
     alt: "amazon banner",
   },
   {
@@ -19,4 +19,4 @@ export default [
     src: "https://m.media-amazon.com/images/I/71qid7QFWJL._SX3000_.jpg",
     alt: "amazon banner",
   },
-];
+]; 

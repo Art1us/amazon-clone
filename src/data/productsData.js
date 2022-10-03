@@ -10,7 +10,7 @@ export default [
   },
 
   {
-    id: "49949495",
+    id: "499494925",
     title:
       "Kenwood kMix Stand Mixer for Bakeing, Stylish Kitchen Mixer with K-beater, Dough Hook and Whisk",
     price: 239.99,
@@ -19,7 +19,7 @@ export default [
   },
 
   {
-    id: "223949495",
+    id: "2239494915",
     title: "Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor",
     price: 199.99,
     image:
@@ -28,7 +28,7 @@ export default [
   },
 
   {
-    id: "4954319495",
+    id: "49543139495",
     title:
       "Amazon Echo (3rd generation) Smart speaker with Alexa, Charcoal Fabric",
     price: 98.99,
@@ -38,7 +38,7 @@ export default [
   },
 
   {
-    id: "4994443335",
+    id: "49944433235",
     title:
       "New Apple iPad Pro (12.9-inch, Wi-Fi, 128Gb) - Silver (4th Generation)",
     price: 598.99,
@@ -48,12 +48,12 @@ export default [
   },
 
   {
-    id: "4966443335",
+    id: "49664433135",
     title:
       "Samsung LC49RG90SSUXEN 49' Curved LED Gaming Monitor WQHD 5120x1440",
     price: 1094.98,
     image:
       "https://images-na.ssl-images-amazon.com/images/I/6125mFrzr6L._ACSX355_.jpg",
     rating: 4,
-  },
+  }
 ];

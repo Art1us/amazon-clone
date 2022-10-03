@@ -5,7 +5,7 @@
     overflow-x: hidden;
     max-width: 1500px;
     object-fit: contain;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1),
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0 15vw,
             rgba(0, 0, 0, 0));
 }
 
@@ -28,7 +28,6 @@
 
 .imageSlider__arrowRight {
     grid-column: 3/4;
-    padding-right: 20px;
 }
 
 .imageSlider__arrow {

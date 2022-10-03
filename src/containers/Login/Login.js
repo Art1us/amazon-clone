@@ -10,17 +10,17 @@ import {
 
 function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("111@aaa.com");
+  const [password, setPassword] = useState("222333a");
 
   const signIn = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
-      .then((auth) => navigate("/"))
+      .then((auth) => navigate(-1))
       .catch((err) => alert(err.message));
   };
 
- /*  const signOut = (e) => {
+  /*  const signOut = (e) => {
     e.preventDefault();
     signOut(auth)
       .then(() => console.log("user signed out"))
@@ -32,9 +32,8 @@ function Login() {
 
     createUserWithEmailAndPassword(auth, email, password)
       .then((auth) => {
-        console.log(auth);
         if (auth) {
-          navigate("/");
+          navigate(-1);
         }
       })
       .catch((err) => alert(err.message));

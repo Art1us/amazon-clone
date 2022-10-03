@@ -1,63 +1,62 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../../assets/styles/ImageSlider.css";
 import bannerImages from "../../data/bannerImages";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import { motion, AnimatePresence } from "framer-motion";
+import { wrap } from "popmotion";
+
+const variants = {
+  initial: (direction) => {
+    return {
+      x: direction > 0 ? -500 : 500,
+      opacity: 0,
+    };
+  },
+  animate: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction) => {
+    return {
+      zIndex: 0,
+      x: direction < 0 ? -500 : 500,
+      opacity: 0,
+    };
+  },
+};
 
 function ImageSlider() {
-  const [currentBanner, setCurrentBanner] = useState(0);
-  const [autoScroll, setAutoScroll] = useState(false);
+  const [[page, direction], setPage] = useState([0, 0]);
 
-  let slideInterval;
-  let intervalTime = 5000;
-
-  function prevBanner() {
-    setAutoScroll(false);
-    setCurrentBanner(
-      currentBanner > 0 ? (prev) => prev - 1 : bannerImages.length - 1
-    );
+  function paginate(newDir) {
+    setPage([page + newDir, newDir]);
   }
 
-  function nextBanner() {
-    setAutoScroll(false);
-    setCurrentBanner(
-      currentBanner < bannerImages.length - 1 ? (prev) => prev + 1 : 0
-    );
-  }
-
-  function nextAutoBanner() {
-    if (currentBanner < bannerImages.length - 1) {
-      setCurrentBanner((prev) => prev + 1);
-    } else {
-      setCurrentBanner(0);
-      setAutoScroll(false);
-    }
-  }
-
-  function autoBanner() {
-    slideInterval = setInterval(() => nextAutoBanner(), intervalTime);
-  }
-
-  useEffect(() => {
-    if (autoScroll) {
-      autoBanner();
-    }
-    return () => clearInterval(slideInterval);
-  }, [currentBanner]);
+  const imageIndex = wrap(0, bannerImages.length, page);
 
   return (
     <>
-      <div className="imageSlider__arrowLeft" onClick={prevBanner}>
+      <div className="imageSlider__arrowLeft" onClick={() => paginate(-1)}>
         <ArrowBackIosIcon className="imageSlider__arrow" />
       </div>
-      <div className="imageSlider__arrowRight" onClick={nextBanner}>
+      <div className="imageSlider__arrowRight" onClick={() => paginate(1)}>
         <ArrowForwardIosIcon className="imageSlider__arrow" />
       </div>
-      <img
-        className="imageSlider__slideImage"
-        src={bannerImages[currentBanner].src}
-        alt="amazon banner"
-      />
+      <AnimatePresence initial={false} custom={direction}>
+        <motion.img
+          variants={variants}
+          initial="initial"
+          animate="animate"
+          exit="exit"
+          custom={direction}
+          className="imageSlider__slideImage"
+          src={bannerImages[imageIndex].src}
+          alt="amazon banner"
+          key={page}
+        />
+      </AnimatePresence>
     </>
   );
 }

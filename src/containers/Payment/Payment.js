@@ -1,24 +1,15 @@
 import React, { useState } from "react";
-import CheckoutProduct from "../Checkout/CheckoutProduct";
 import "../../assets/styles/Payment.css";
 import { useStateValue } from "../../context/StateProvider";
-import { getBasketTotal } from "../../context/reducer";
 import { Link } from "react-router-dom";
-import CurrencyFormat from "react-currency-format";
-import CreditCardIcon from "@mui/icons-material/CreditCard";
+import ShippingAddress from "./ShippingAddress";
+import PaymentMethod from "./PaymentMethod";
+import PaymentItems from "./PaymentItems";
 
 function Payment() {
-  const [{ basket, user }, dispatch] = useStateValue();
-  const disableButton = true;
-  const formSubmitHandler = (e) => {
-    e.preventDefault();
-  };
+  const [{ basket, user }] = useStateValue();
 
-  const [succeeded, setSucceeded] = useState(false);
-  const [processing, setProcessing] = useState("");
-
-  const [error, setError] = useState(null);
-  const [disabled, setDisabled] = useState(true);
+  const [selectedTitle, setSelectedTitle] = useState(1);
 
   return (
     <div className="payment">
@@ -26,66 +17,28 @@ function Payment() {
         <h1>
           Checkout (<Link to="/checkout">{basket?.length} items</Link>)
         </h1>
-        <div className="payment__section">
-          <div className="payment__title">
-            <h3>Delivery Address</h3>
+        <div className="payment__section" onClick={() => setSelectedTitle(1)}>
+          <div className={`payment__title ${selectedTitle === 1 && 'selected'}`}>
+            <h3>1</h3>
+            <h3>Choose a shipping address</h3>
           </div>
-          <div className="payment__address">
-            <p>{user?.email}</p>
-            <p>123 React Lane</p>
-            <p>San Francisco, CA</p>
-          </div>
+          {selectedTitle === 1 && (
+            <ShippingAddress setSelectedTitle={setSelectedTitle} />
+          )}
         </div>
-        <div className="payment__section">
-          <div className="payment__title">
-            <h3>Review items and delivery</h3>
-          </div>
-          <div className="payment__items">
-            {basket.map((item) => (
-              <CheckoutProduct
-                key={item.id + Math.floor(Math.random() * 100000)}
-                id={item.id}
-                title={item.title}
-                image={item.image}
-                price={item.price}
-                rating={item.rating}
-              />
-            ))}
-          </div>
-        </div>
-        <div className="payment__section">
-          <div className="payment__title">
+        <div className="payment__section" onClick={() => setSelectedTitle(2)}>
+          <div className={`payment__title ${selectedTitle === 2 && 'selected'}`}>
+            <h3>2</h3>
             <h3>Payment Method</h3>
           </div>
-
-          <div className="payment__details">
-            <form onSubmit={formSubmitHandler}>
-              <div className="payment__creditCardContainer">
-                <CreditCardIcon />
-                <input placeholder="Card number" type="text" />
-                <input placeholder="MM/YY" type="text" />
-                <input placeholder="CVC" type="text" />
-              </div>
-
-              <div className="payment__priceContainer">
-                <CurrencyFormat
-                  renderText={(value) => <h3>Order Total:{value}</h3>}
-                  decimalScale={2}
-                  value={getBasketTotal(basket)}
-                  displayType={"text"}
-                  thousandSeparator={true}
-                  prefix={"$"}
-                />
-                <button
-                  className="payment__button"
-                  type="submit"
-                  disabled={processing || disabled || succeeded}
-                >
-                  <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
-                </button>
-              </div>
-            </form>
+          {selectedTitle === 2 && <PaymentMethod />}
+        </div>
+        <div className="payment__section" onClick={() => setSelectedTitle(3)}>
+          <div className={`payment__title ${selectedTitle === 3 && 'selected'}`}>
+            <h3>3</h3>
+            <h3>Items and shipping</h3>
           </div>
+          {selectedTitle === 3 && <PaymentItems />}
         </div>
       </div>
     </div>

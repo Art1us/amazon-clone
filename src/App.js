@@ -2,7 +2,7 @@ import "./assets/styles/App.css";
 import Header from "./containers/Header";
 import Home from "./containers/Home/Home";
 import Checkout from "./containers/Checkout/Checkout";
-import Payment from './containers/Payment/Payment'
+import Payment from "./containers/Payment/Payment";
 import Login from "./containers/Login/Login";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
@@ -15,19 +15,21 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (authUser) => {
-        dispatch({
-          type:'SET_USER',
-          user: authUser
-        })
+      dispatch({
+        type: "SET_USER",
+        user: authUser,
+      });
       if (authUser) {
       } else {
         dispatch({
-          type:'SET_USER',
-          user: null
-        })
+          type: "SET_USER",
+          user: null,
+        });
       }
     });
   }, []);
+
+  
 
   return (
     <Router>
