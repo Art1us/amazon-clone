@@ -19,4 +19,4 @@ export default [
     src: "https://m.media-amazon.com/images/I/71qid7QFWJL._SX3000_.jpg",
     alt: "amazon banner",
   },
-];
+]; 

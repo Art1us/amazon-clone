@@ -4,9 +4,8 @@
     width: 100%;
     overflow-x: hidden;
     max-width: 1500px;
-    background-size: contain ;
-    background-repeat: no-repeat;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1),
+    object-fit: contain;
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0 15vw,
             rgba(0, 0, 0, 0));
 }
 
@@ -29,7 +28,6 @@
 
 .imageSlider__arrowRight {
     grid-column: 3/4;
-    padding-right: 20px;
 }
 
 .imageSlider__arrow {

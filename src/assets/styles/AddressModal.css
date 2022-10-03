@@ -61,7 +61,7 @@
     padding: 20px 0;
 }
 
-input {
+.addressInput input {
     border: 1px solid #888C8C;
     border-radius: 4px;
 }

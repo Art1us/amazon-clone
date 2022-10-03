@@ -34,6 +34,7 @@
     padding: 10px;
     border: none;
     width: 100%;
+    border: 1px solid white !important;
 }
 
 .header__searchIcon {
