@@ -1,25 +1,19 @@
 .product{    
     display:flex;
     flex-direction: column;
-    align-items:center;
-    justify-content:flex-end;
+    align-items:flex-start;
+    justify-content:space-between;
     margin:10px;    
     padding:20px;
     max-width:90vw;
-    max-height:400px;  
+    height:375px; 
+    
     background-color: white;
     z-index:1;
 }
 
-.product__info{
-    height:100px;
-    margin-top:0;
-    padding:0;
-    margin-bottom:15px;
-    width:100%;
-    height: min-content;
-    display: flex;
-    flex-direction: column;
+.product img{
+    cursor:pointer;
 }
 
 .product__title{
@@ -27,36 +21,71 @@
     overflow:hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-}
-
-.product__rating{
-    display:flex;
+    
+    margin-bottom:10px;
 }
 
 .product>img{
-    height:200px;
+    height:250px;
     width:100%;
     object-fit: contain;
     margin-bottom: 15px;
+    cursor:pointer;
 }
 
-.product > button{
-    background: #f0c14b;
-    border: 1px solid;
-    margin-top: 10px;
-    border-color:#a88734 #9c7e31 #846a29;
-    color: #111;
+.product__ctaButton {
+    color: #007185;
+    cursor: pointer;
 }
 
-.product > button:active {
-    background: #e5e5e5;
-    -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
-       -moz-box-shadow: inset 0px 0px 5px #c1c1c1;
-            box-shadow: inset 0px 0px 5px #c1c1c1;
-     outline: none;
-  }
+.product__ctaButton:hover {
+    text-decoration: underline;
+    color: #C75167;
+}
 
-.product__price{
+.combinedProduct__imagesContainer{
+    width:100%;
+    height: min-content;
+    display: grid;
+    grid: repeat(2, max-content) / repeat(3, 1fr);
+}
+
+.combinedProduct__imageWrapper.full-width{
+    grid-column: 1 / -1;    
+}
+
+.combinedProduct__imageWrapper{
+    border: 3px solid white;
+}
+
+.combinedProduct__imageWrapper img{
+    width: 100%;
+    object-fit: cover;   
+}
+
+.productCategories__imagesContainer{
+    width:100%;
+    max-height:100%;
+    height: min-content;
+    display: grid;
+    grid: 50% 50% / 50% 50%;
+}
+
+.productCategories__imageWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    background-color: rgb(242,250,251);
+    border: 3px solid white;
+}
+
+.productCategories__imageWrapper img{
     margin-top: 5px;
+    height: 65%;
 }
 
+.productCategories__imageWrapper p{
+    font-size: 13px;
+}
