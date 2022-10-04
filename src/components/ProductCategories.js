@@ -1,9 +1,7 @@
 import React from "react";
 import "../assets/styles/Product.css";
-import { combinedProducts } from "../data/productsData";
 
-function ProductCategories() {
-  const { title, cta, images } = combinedProducts[0];
+function ProductCategories({ data: { title, images, cta } }) {
 
   return (
     <div className="product">

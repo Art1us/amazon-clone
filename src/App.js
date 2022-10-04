@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./utils/firebase";
 import { useStateValue } from "./context/StateProvider";
+import Footer from "./containers/Footer";
 
 function App() {
   const [{}, dispatch] = useStateValue();
@@ -60,6 +61,7 @@ function App() {
               <>
                 <Header />
                 <Home />
+                <Footer />
               </>
             }
           />

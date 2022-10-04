@@ -1,8 +1,11 @@
+import {newProducts} from '../data/productsData'
+
 export const initialState = {
   basket: [],
   user: null,
   address: [],
   chosenAddress: {},
+  products: newProducts
 };
 
 export const getBasketTotal = (basket) => {
@@ -52,6 +55,16 @@ const reducer = (state, action) => {
 
     case "SET_CHOSEN_ADDRESS":
       return { ...state, chosenAddress: action.chosenAddress };
+
+    case "SHIFT_PRODUCT":
+      const newState = state.products.map((prod)=>{
+        if(prod.id === action.payload){
+          return {...prod, isRendered: true}
+        }
+        return prod
+      })
+      console.log(newState)
+      return {...state, products: [...newState]}
 
     default:
       return state;

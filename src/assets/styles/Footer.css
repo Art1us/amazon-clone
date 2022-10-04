@@ -1,0 +1,26 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer__backToTop {
+    padding: 10px;
+    text-align: center;
+
+    cursor: pointer;
+
+    color: white;
+    background-color: rgb(55, 71, 90);
+}
+
+.footer__backToTop:hover {
+    background-color: rgba(55, 71, 90, .9);
+}
+
+.footer__end{
+    color:white;
+    background-color: rgb(19,26,34);
+
+    padding:30px 0;
+    text-align: center;
+}
