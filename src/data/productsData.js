@@ -293,27 +293,27 @@ export const mostWished = {
   title: "Most Wished",
   images: [
     {
-      image: "https://m.media-amazon.com/images/I/41LHSWnu+uL._SY160_.jpg",
+      image: "https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg",
       title: "Living room decor",
       isFullWidth: true,
     },
     {
-      image: "https://m.media-amazon.com/images/I/31Hau1VjQYL._SY75_.jpg",
+      image: "https://m.media-amazon.com/images/I/31RzKGpaYyL._SY75_.jpg",
       title: "Vase decor",
       isFullWidth: false,
     },
     {
-      image: "https://m.media-amazon.com/images/I/31RzKGpaYyL._SY75_.jpg",
+      image: "https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg",
       title: "Kitchen",
       isFullWidth: false,
     },
     {
-      image: "https://m.media-amazon.com/images/I/31iL7SG4snL._SY75_.jpg",
+      image: "https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg",
       title: "Bedding",
       isFullWidth: false,
     },
     {
-      image: "https://m.media-amazon.com/images/I/41LHSWnu+uL._SY160_.jpg",
+      image: "https://images-na.ssl-images-amazon.com/images/I/51Zymoq7UnL._AC_SY400_.jpg",
       title: "Living room decor",
       isFullWidth: true,
     },

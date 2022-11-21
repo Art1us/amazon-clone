@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import "../../assets/styles/Home.css";
 import FullWidthBanner from "../../components/FullWidthBanner";
 import ProductRow from "../../components/ProductRow";
@@ -6,21 +6,20 @@ import { bannersArray } from "../../data/productsData";
 import ImageSlider from "./ImageSlider";
 
 function Home() {
-  const [rowLength, setRowLength] = useState(4);
+  const [rowLength, setRowLength] = useState();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    setRowLength(determineRowLength());
     window.addEventListener("resize", () => setRowLength(determineRowLength()));
-  }, );
+  }, []);
 
   function determineRowLength() {
     switch (true) {
-      case window.innerWidth < 625:
-        return 1;
       case window.innerWidth < 938:
         return 2;
       case window.innerWidth < 1235:
         return 3;
-      case window.innerWidth < 1600:
+      case window.innerWidth > 1235:
         return 4;
       default:
         return 2;
